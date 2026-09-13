@@ -1,0 +1,408 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Woodwork Admin Panel</title>
+
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+
+<body>
+
+    <div class="admin-layout">
+<div class="mobile-header">
+    <div class="mobile-logo">
+        Awais <span>Studio</span>
+    </div>
+
+    <div class="mobile-header-actions">
+        <button id="themeBtn" class="theme-btn" type="button" title="Toggle Theme">
+            🌙
+        </button>
+
+        <button id="menuBtn" class="menu-btn" type="button" title="Menu">
+            ☰
+        </button>
+    </div>
+</div>
+
+      
+        <!-- SIDEBAR -->
+        <aside class="sidebar" id="sidebar">
+            <nav>
+
+                <!-- HOME -->
+                <button class="nav-item active" onclick="showPage('home')">
+                    🏠 Home
+                </button>
+
+                <!-- DASHBOARD -->
+                <button class="nav-item" onclick="showPage('dashboard')">
+                    📊 Dashboard
+                </button>
+
+                <!-- ORDERS -->
+                <button class="nav-item" onclick="showPage('orders')">
+                    📦 Orders
+                </button>
+
+                <!-- PROFILE -->
+                <button class="nav-item" onclick="showPage('profile')">
+                    👤 Profile
+                </button>
+
+                <!-- SETTINGS -->
+                <button class="nav-item" onclick="showPage('settings')">
+                    ⚙️ Settings
+                </button>
+
+                <!-- LOGOUT -->
+                <button class="nav-item logout-nav" onclick="logout()">
+                    🚪 Logout
+                </button>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- TOPBAR -->
+            <header class="topbar">
+
+                <div>
+                    <h2>Woodwork Admin Panel</h2>
+                    <p>Manage your website</p>
+                </div>
+
+               
+                
+
+            </header>
+
+
+            <!-- ================= HOME ================= -->
+
+            <section id="homePage" class="page">
+
+                <div class="home-content">
+
+                    <h1>Welcome to Woodwork 👋</h1>
+
+                    <p class="home-subtitle">
+                        Welcome to your Woodwork Website Admin Panel.
+                    </p>
+
+                    <div class="home-cards">
+
+                        <div class="home-card">
+                            <div class="home-icon">📊</div>
+
+                            <h3>Dashboard</h3>
+
+                            <p>
+                                View your website order statistics
+                                and recent orders.
+                            </p>
+
+                            <button onclick="showPage('dashboard')">
+                                Open Dashboard
+                            </button>
+                        </div>
+
+
+                        <div class="home-card">
+                            <div class="home-icon">📦</div>
+
+                            <h3>Orders</h3>
+
+                            <p>
+                                Manage customer orders, complete
+                                orders and delete orders.
+                            </p>
+
+                            <button onclick="showPage('orders')">
+                                View Orders
+                            </button>
+                        </div>
+
+
+                        <div class="home-card">
+                            <div class="home-icon">👤</div>
+
+                            <h3>Admin Profile</h3>
+
+                            <p>
+                                View your administrator account
+                                information.
+                            </p>
+
+                            <button onclick="showPage('profile')">
+                                View Profile
+                            </button>
+                        </div>
+
+
+                        <div class="home-card">
+                            <div class="home-icon">⚙️</div>
+
+                            <h3>Settings</h3>
+
+                            <p>
+                                Manage your admin panel settings.
+                            </p>
+
+                            <button onclick="showPage('settings')">
+                                Open Settings
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= DASHBOARD ================= -->
+
+            <section id="dashboardPage" class="page hidden">
+
+                <h1>Dashboard</h1>
+
+                <div class="stats">
+
+                    <div class="stat-card">
+                        <span>Total Orders</span>
+                        <strong id="totalOrders">0</strong>
+                    </div>
+
+                    <div class="stat-card">
+                        <span>Pending Orders</span>
+                        <strong id="pendingOrders">0</strong>
+                    </div>
+
+                    <div class="stat-card">
+                        <span>Completed Orders</span>
+                        <strong id="completedOrders">0</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="dashboard-box">
+
+                    <h2>Recent Orders</h2>
+
+                    <div id="recentOrders">
+                        Loading...
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= ORDERS ================= -->
+
+            <section id="ordersPage" class="page hidden">
+
+                <div class="page-header">
+
+                    <div>
+                        <h1>Orders</h1>
+
+                        <p>
+                            Manage customer orders
+                        </p>
+                    </div>
+
+                    <button
+                        class="refresh-btn"
+                        onclick="loadOrders()">
+
+                        ↻ Refresh
+
+                    </button>
+
+                </div>
+
+
+                <div class="orders-box">
+
+                    <div id="ordersContainer">
+                        Loading orders...
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= PROFILE ================= -->
+
+            <section id="profilePage" class="page hidden">
+
+                <div class="page-header">
+
+                    <div>
+                        <h1>Admin Profile</h1>
+
+                        <p>
+                            Administrator account information
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="profile-box">
+
+                    <div class="profile-avatar">
+                        👤
+                    </div>
+
+                    <h2>Woodwork Admin</h2>
+
+                    <p>
+                        Administrator
+                    </p>
+
+                    <div class="profile-info">
+
+                        <div>
+                            <strong>Website</strong>
+                            <span>Woodwork Website</span>
+                        </div>
+
+                        <div>
+                            <strong>Account</strong>
+                            <span>Administrator</span>
+                        </div>
+
+                        <div>
+                            <strong>Status</strong>
+                            <span class="profile-status">
+                                Active
+                            </span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= SETTINGS ================= -->
+
+            <section id="settingsPage" class="page hidden">
+
+                <div class="page-header">
+
+                    <div>
+                        <h1>Settings</h1>
+
+                        <p>
+                            Manage admin panel settings
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="settings-box">
+
+                    <div class="setting-item">
+
+                        <div>
+                            <h3>Admin Panel</h3>
+
+                            <p>
+                                Woodwork Website administration
+                            </p>
+                        </div>
+
+                        <span class="setting-active">
+                            Active
+                        </span>
+
+                    </div>
+
+
+                    <div class="setting-item">
+
+                        <div>
+                            <h3>Order Management</h3>
+
+                            <p>
+                                Manage customer website orders
+                            </p>
+                        </div>
+
+                        <span class="setting-active">
+                            Enabled
+                        </span>
+
+                    </div>
+
+
+                    <div class="setting-item">
+
+                        <div>
+                            <h3>Security</h3>
+
+                            <p>
+                                Admin session authentication
+                            </p>
+                        </div>
+
+                        <span class="setting-active">
+                            Protected
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- ================= ORDER MODAL ================= -->
+
+    <div id="orderModal" class="modal">
+
+        <div class="modal-content">
+
+            <button
+                class="close-btn"
+                onclick="closeModal()">
+
+                ×
+
+            </button>
+
+            <h2>Order Details</h2>
+
+            <div id="orderDetails"></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- PANEL JAVASCRIPT -->
+    <script src="js/panel.js"></script>
+
+</body>
+</html>
+```
