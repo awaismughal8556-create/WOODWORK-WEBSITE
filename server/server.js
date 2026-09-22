@@ -83,13 +83,12 @@ const orderSchema = new mongoose.Schema(
 
 const Order = mongoose.model("Order", orderSchema);
 
-// ================= HOME =================
+// ================= FRONTEND =================
+
+app.use(express.static(path.join(__dirname, "../clints")));
 
 app.get("/", (req, res) => {
-    res.json({
-        success: true,
-        message: "Woodwork Website Backend Running"
-    });
+    res.sendFile(path.join(__dirname, "../clints/INDEX.HTML"));
 });
 
 // ================= ADMIN LOGIN =================
