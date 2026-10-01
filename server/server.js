@@ -88,7 +88,7 @@ const Order = mongoose.model("Order", orderSchema);
 app.use(express.static(path.join(__dirname, "../clints")));
 
 app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "../clints/INDEX.HTML"));
+    res.sendFile(path.join(__dirname, "../clints/index.HTML"));
 });
 
 // ================= ADMIN LOGIN =================
